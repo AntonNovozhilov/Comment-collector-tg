@@ -1,0 +1,10 @@
+venv/
+.venv/
+
+.env
+
+*.log
+*.xlsx
+*.session
+
+__pycache__/
