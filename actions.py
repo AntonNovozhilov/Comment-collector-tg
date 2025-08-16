@@ -9,6 +9,7 @@ class Actions:
 
     @staticmethod
     def normalize_text(text: str) -> str:
+        """Убирает все спецсимволы."""
         if not text:
             return ""
         text = re.sub(r"[*_`~]", "", text)
@@ -25,7 +26,7 @@ class Actions:
     async def collect_all_messages(
         self, group_id=setting.DISCUSSION_CHAT_ID
     ) -> list:
-        """Собираем все сообщения в Excel"""
+        """Собираем все сообщения."""
         comments = []
         client = await get_telethon_session()
         async with client:
@@ -52,6 +53,7 @@ class Actions:
         return comments
 
     def all_messages_in_file(self, array, output_file=setting.OUTPUT_FILE_ALL):
+        """Формируем сообщения в файле Excel."""
         df = pd.DataFrame(
             array,
             columns=[
@@ -105,6 +107,7 @@ class Actions:
         return comments
 
     def all_messages_post_in_file(self, array, output_file=None):
+        """Формируем сообщения в файле Excel."""
         if output_file is None:
             output_file = setting.all_comments_for_date
         df = pd.DataFrame(

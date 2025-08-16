@@ -8,6 +8,7 @@ load_dotenv(".env")
 
 
 class Settings:
+    """Настройки приложения."""
 
     BOT_TOKEN = os.getenv("BOT_TOKEN")
     API_ID = int(os.getenv("API_ID"))
@@ -30,6 +31,7 @@ telethon_client = TelegramClient(
 
 
 async def get_telethon_session() -> TelegramClient:
+    """Подключение к клиенту тг."""
     if not telethon_client.is_connected():
         await telethon_client.connect()
     if not await telethon_client.is_user_authorized():
